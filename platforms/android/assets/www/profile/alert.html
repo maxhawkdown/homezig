@@ -1,0 +1,43 @@
+<div  data-role="view" data-layout="main" data-title="Alert" data-init="start">
+    <div id="divtoBlink">
+        <span>ตรวจพบควันในห้องครัว<span><br>
+        <a data-role="button" data-click="stop" style="background-color: green; color: white;">OK</a>
+        <div id="sound">
+            <audio autoplay>
+                <source src="alertsound.ogg" type="audio/ogg">
+                <source src="alertsound.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+function stop(){    
+    $("#divtoBlink").fadeOut();
+}
+
+function start(){
+    
+$("#divtoBlink").fadeIn(); 
+setInterval(function(){        
+        $("#divtoBlink").toggleClass("backgroundRed");       
+        },200);
+}
+ </script>
+ 
+ <style scoped>
+     #divtoBlink
+     {
+         height: inherit;
+         font-size: 1.8em;
+         padding-top: 50%;
+         padding-bottom: 50%;
+         text-align: center;
+     }
+     #divtoBlink span
+     {
+         margin:auto;
+     }
+ </style>

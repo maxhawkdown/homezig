@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+
+        <!-- <link rel="stylesheet" href="js/jquery-mobile/jquery.mobile-1.4.2.min.css" />
+         <link rel="stylesheet" href="js/jquery-mobile/jquery.mobile-1.4.2.css" />-->
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <link href="css/index.css" rel="stylesheet" />
+        <link href="css/styles/kendo.common.min.css" rel="stylesheet" />
+        <link href="css/styles/kendo.default.min.css" rel="stylesheet" />
+        <!-- Kendo UI Mobile CSS -->
+        <link href="css/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <!-- jQuery JavaScript -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Kendo UI Mobile combined JavaScript -->
+        <script src="js/kendo.all.min.js"></script>
+        <script src="js/kendo.mobile.min.js"></script>
+
+        <script src="js/index.js"></script>
+        <script src="js/jquery.xmlrpc.js"></script>
+        <script src="js/jquery/jquery.js"></script>
+        <!-- <script src="js/jquery-mobile/jquery.mobile-1.4.2.min.js"></script>
+        <script src="js/jquery-mobile/jquery.mobile-1.4.2.js"></script>-->
+        <title>Hello World</title>
+        
+    </head>
+    <body>
+        <!-- local view -->
+
+        <div data-role="layout" data-id="main">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title">Hello World!</span>
+                    <a data-align="left" href="#drawer-left" data-rel="drawer" data-role="button" data-icon="menuleft"></a>
+                    <a data-align="right" href="#drawer-right" data-rel="drawer" data-role="button" data-icon="menuright"></a>                    
+                </div>
+            </div>
+
+            <div data-role="footer" id="ft">
+                <div data-role="tabstrip">
+                    <a href="remoteView/home.html" data-icon="home">Home</a>
+                    <a href="remoteView/page2.html" data-icon="powered">Powered</a>
+                    <a href="remoteView/allDevice.html" data-icon="organize">Device</a>
+                    <a href="remoteView/secure.html" data-icon="secure">Security</a>
+                    <a data-icon="settings">Setting</a>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="view" data-layout="main"></div>
+
+        <div data-role="drawer" id="drawer-left" data-position="left" >            
+
+            <ul data-role="listview" id="dleft" data-style="inset" data-type="group" data-fixed-headers="true">
+                <li>
+                    Profile
+                    <ul>
+                        <li data-icon="contacts"><a href="profile/outGoing.html">Out Going</a></li>
+                        <li data-icon="contacts"><a href="profile/profile2.html">In Home</a></li>
+                        <li data-icon="contacts"><a href="profile/alert.html">Alert</a></li>
+                        <li data-icon="contacts"><a href="profile/profile1.html">Full Secure</a></li>
+                    </ul>
+                </li>
+                <li>
+                    Favorite
+                    <ul>
+                        <li data-icon="camera"><a>Camera1</a></li>
+                        <li data-icon="camera"><a>Camera2</a></li>
+                        <li data-icon="camera"><a>Camera3</a></li>
+                        <li data-icon="wifi"><a href="remoteView/remote.html">Remote</a></li>
+                    </ul>
+                </li>                
+            </ul>
+
+            <div data-role="footer">
+                <div data-role="navbar">
+                    <a data-align="right" data-role="button">Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="drawer" id="drawer-right" data-position="rigth">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title">Settings</span>
+                </div>
+            </div>
+
+            <ul data-role="listview">
+                <li>more..</li>
+            </ul>
+
+            <div data-role="footer">
+                <div data-role="navbar">
+                    <a data-align="right" data-role="button">Details</a>
+                </div>
+            </div>
+             <style scoped>
+        .km-android .km-navbar .km-view-title
+        {
+            visibility: visible;
+        }
+
+        .km-powered:after,
+        .km-powered:before
+        {
+            content: "\E21a";
+        }
+
+        .km-secure:after,
+        .km-secure:before
+        {
+            content: "\e0ff";
+        }
+
+        .km-menuleft:after,
+        .km-menuleft:before
+        {
+            content: "\e0ba";
+        }
+
+        .km-menuright:after,
+        .km-menuright:before
+        {
+            content: "\e0ac";
+        }
+        
+        #listview .km-list a 
+        {           
+            color: red;           
+        }
+         #dleft .km-list 
+        {
+            //background-color: #6F6F6F;  
+           // color: whitesmoke;
+        }
+        
+        #switch-home h2 
+        {
+            display: block;
+            clear: both;
+            font-size: 1.2em;
+            color: red;
+            margin: .1em 0 0 0;
+            
+        }
+        
+        .backgroundRed
+       {
+        background: red;
+       }
+       
+       ul.ee .km-switch
+       {
+           width: 50rem;
+       }
+    </style>
+        </div>
+
+
+
+        <script>
+            var app = new kendo.mobile.Application($(document.body), {
+                platform: "ios7",
+                //skin: "flat",
+                initial: "remoteView/home.html"
+            });
+            
+        
+            
+        </script>
+
+
+    </body>
+     
+</html>

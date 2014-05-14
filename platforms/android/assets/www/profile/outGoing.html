@@ -1,0 +1,53 @@
+<div data-role="view" id="switch-home" data-layout="main" data-title="Homezig mode">
+   <ul data-role="listview" data-style="inset" data-type="group">
+        
+        <li>
+            <ul class="ee">
+                <li><h2>เข้านอน</h2> <input data-role="switch" data-change="switchChange0"/></li>
+                <li><h2>ตื่นนอน</h2> <input data-role="switch" data-change="switchChange1"/></li>
+                <li><h2>กันขโมย</h2> <input data-role="switch" data-change="switchChange2" /></li>
+                <li><h2>ออกจากบ้าน</h2> <input data-role="switch" data-change="switchChange3" /></li>
+            </ul>
+        </li>
+
+        
+    </ul>
+</div>
+
+<script>
+    function switchChange0(e) {
+        if(e.checked === true){
+          
+            $("ul.ee > li:eq(0)").css({"background-color":"#5C85FF"});
+        }else{
+            $("ul.ee > li:eq(0)").css({"background-color":"white"});
+        }
+    }
+    
+    function switchChange1(e) {
+        if(e.checked === true){
+           
+            $("ul.ee > li:eq(1)").css({"background-color":"#5C85FF"});
+        }else{
+            $("ul.ee > li:eq(1)").css({"background-color":"white"});
+        }
+    }
+    
+    function switchChange2(e) {
+        if(e.checked === true){
+           
+            $("ul.ee > li:eq(2)").css({"background-color":"#5C85FF"});
+        }else{
+            $("ul.ee > li:eq(2)").css({"background-color":"white"});
+        }
+    }
+    
+    function switchChange3(e) {
+        if(e.checked === true){
+           
+            $("ul.ee > li:eq(3)").css({"background-color":"#5C85FF"});
+        }else{
+            $("ul.ee > li:eq(3)").css({"background-color":"white"});
+        }
+    }
+</script>

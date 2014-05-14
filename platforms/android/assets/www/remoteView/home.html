@@ -1,0 +1,26 @@
+<div data-role="view" data-layout="main" data-transition="slide" data-title="Home" data-use-native-scrolling="true">
+    
+    <form action="./index.html" >
+        <ul data-role="listview" data-style="inset" data-position="left">
+            <li>
+                <label>Host
+                    <input id="host" type="text" value="maxrouterubu.no-ip.biz" />
+                </label>                
+            </li>
+            <li>
+                <label>Port
+                    <input id="port" type="text" value="8888" />
+                </label>                
+            </li>
+            <li>
+                <label>Uri
+                    <input id="uri" type="text" value="/ws" />
+                </label>                
+            </li>
+            <a data-role="button" data-enable="true" data-click="open">Button</a>
+            <a data-role="button" data-enable="true" data-click="xmlrpc">XmlRpc</a>
+        </ul>     
+    </form>
+    <div id="reciveSocket"></div>
+
+</div>
