@@ -1,17 +1,44 @@
-<div data-role="view" data-layout="main" data-transition="slide" data-title="All Device">
-    <ul data-role="listview" data-style="inset" data-type="group">
-        <li>
-            <ul>
-                <li><a href="profile/profile1.html">Light</a></li>
-                <li><a href="profile/profile1.html">Control</a></li>
-                <li><a href="remoteView/remote.html">Remote</a></li>
-                <li><a href="profile/profile1.html">Door/Gate</a></li>
-                <li><a href="profile/profile1.html">Camera</a></li>
-                <li data-icon="add"><a href="profile/profile1.html">Add</a></li>
+<!-- listview text and icon -->
+<style scoped>
+h2 {
+    display: inline-block;
+    font-size: 1.1em;
+    color: #2b4755;
+}
+ 
+#overview-cities h1  {
+    display: inline-block;
+    font-size: 1em;   
+      color: #2b4755;
+       
+}
+
+#overview-cities img {
+   float: none;
+   
+    margin: 0;
+   /* border: 1px solid rgba(0,0,0,0); 
+    -webkit-border-radius: 7em;
+    border-radius: 4em;
+   */
+}
+</style>
+ 
+<div  data-role="view" data-layout="main" id="overview-cities" data-transition="slide" data-title="All Device">
+    <ul data-role="listview" data-style="inset" data-type="group" >
+        <li >
+             
+            <ul >
+                <li ><img src="./img/icon/on_off.ico" height="42" width="42"/><a href="profile/profile1.html"><h1>Switch Device</h1></a></li>
+               <li><img src="./img/icon/alarm.ico" height="42" width="42"/><a href="profile/profile1.html"><h1>Security</h1></a></li>
+                <li><img src="./img/icon/video_camera.ico" height="42" width="42"/><a href="profile/profile1.html"><h1>CCTV</h1></a></li>
+              
+              
+              
             </ul>
         </li>
     </ul>   
-    
+        
 </div>
 
 

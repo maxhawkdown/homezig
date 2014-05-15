@@ -269,7 +269,12 @@ E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\css\styles\Un
 E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\css\styles\Uniform\sprite.png \
 E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\css\styles\Uniform\sprite_2x.png \
 E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\img\45913.jpg \
+E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\img\icon \
 E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\img\logo.png \
+E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\img\icon\alarm.ico \
+E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\img\icon\exit.png \
+E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\img\icon\on_off.ico \
+E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\img\icon\video_camera.ico \
 E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\js\index.js \
 E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\js\jquery \
 E:\NetBeansProjects\HTML5Application1\platforms\android\assets\www\js\jquery-mobile \

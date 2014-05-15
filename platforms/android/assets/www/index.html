@@ -32,22 +32,23 @@
     </head>
     <body>
         <!-- local view -->
-
+ 
         <div data-role="layout" data-id="main">
             <div data-role="header">
+                
                 <div data-role="navbar">
-                    <span data-role="view-title">Hello World!</span>
-                    <a data-align="left" href="#drawer-left" data-rel="drawer" data-role="button" data-icon="menuleft"></a>
-                    <a data-align="right" href="#drawer-right" data-rel="drawer" data-role="button" data-icon="menuright"></a>                    
+                   <span data-role="view-title">HomeZig</span>
+                    <a data-align="left" href="#drawer-left" data-rel="drawer" data-role="button">H</a>
+                 <!--  <a data-align="right" href="#drawer-right" data-rel="drawer" data-role="button" data-icon="menuright"></a>        -->            
                 </div>
             </div>
 
             <div data-role="footer" id="ft">
                 <div data-role="tabstrip">
                     <a href="remoteView/home.html" data-icon="home">Home</a>
-                    <a href="remoteView/page2.html" data-icon="powered">Powered</a>
+                    <a href="remoteView/page2.html" data-icon="featured">Powered</a>
                     <a href="remoteView/allDevice.html" data-icon="organize">Device</a>
-                    <a href="remoteView/secure.html" data-icon="secure">Security</a>
+                    <a href="remoteView/secure.html" data-icon="recents">Security</a>
                     <a data-icon="settings">Setting</a>
                 </div>
             </div>
@@ -80,7 +81,7 @@
 
             <div data-role="footer">
                 <div data-role="navbar">
-                    <a data-align="right" data-role="button">Details</a>
+                    <a data-align="right"  data-role="button">Details</a>
                 </div>
             </div>
         </div>
@@ -98,68 +99,92 @@
 
             <div data-role="footer">
                 <div data-role="navbar">
-                    <a data-align="right" data-role="button">Details</a>
+                    <a data-align="right" data-role="button" >Details</a>
                 </div>
             </div>
-             <style scoped>
-        .km-android .km-navbar .km-view-title
-        {
-            visibility: visible;
-        }
+       <style scoped>
+ 
+ /* top left navbar button  */ 
+    /* icon */
+    .km-menuleft:after,
+    .km-menuleft:before
+    {
+        content: "\e077";
+    }
+    /* color icon */
+ 
+ /* navbar */
+  
+      .km-ios7 .km-view .km-navbar {
+     background-color: #4a5866;
+        font-family: Helvetica;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    text-shadow: none;
+ }
+ 
+ /* background */
+ .km-ios7 .km-view .km-content {  
+    background-color: #f3f3f6;
+}
+.km-ios7 .km-view .km-content .km-listgroupinset .km-group-title {
+    color: #4a5866;
+         font-family: Helvetica;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    text-shadow: none;
+}
+/* top nav text */
+.km-ios7 .km-view .km-navbar .km-view-title > * {
+    color: #FFFFFF;
+      
+}
 
-        .km-powered:after,
-        .km-powered:before
-        {
-            content: "\E21a";
-        }
+/* listview */
+.km-ios7 .km-view .km-content .km-list > li {
+     background-color: #f3f3f6;
+    
+         font-family: Helvetica;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    text-shadow: none;
+     
+}
 
-        .km-secure:after,
-        .km-secure:before
-        {
-            content: "\e0ff";
-        }
+ 
+/* button text*/
+.km-ios7 .km-view .km-content .km-button .km-text {
+    font-family: Helvetica;
+    color: #ffffff;
+     
+}
+/* button background*/
+.km-ios7 .km-view .km-content .km-button {
+    background-color: #4a5866;
+   
+}
+ 
+/* footer icon color  */
+.km-ios7 .km-view .km-tabstrip .km-button .km-icon {
+    color: #FFFFFF;
+}
+/* footer icon color background */
+.km-ios7 .km-view .km-tabstrip .km-button {
+    background-color: #4a5866;
+}
+/* footer icon color text */
+.km-ios7 .km-view .km-tabstrip .km-button .km-text {
+    color: #FFFFFF;
+    
 
-        .km-menuleft:after,
-        .km-menuleft:before
-        {
-            content: "\e0ba";
-        }
-
-        .km-menuright:after,
-        .km-menuright:before
-        {
-            content: "\e0ac";
-        }
-        
-        #listview .km-list a 
-        {           
-            color: red;           
-        }
-         #dleft .km-list 
-        {
-            //background-color: #6F6F6F;  
-           // color: whitesmoke;
-        }
-        
-        #switch-home h2 
-        {
-            display: block;
-            clear: both;
-            font-size: 1.2em;
-            color: red;
-            margin: .1em 0 0 0;
-            
-        }
-        
-        .backgroundRed
-       {
-        background: red;
-       }
-       
-       ul.ee .km-switch
-       {
-           width: 50rem;
-       }
+    
+}
     </style>
         </div>
 
@@ -169,7 +194,7 @@
             var app = new kendo.mobile.Application($(document.body), {
                 platform: "ios7",
                 //skin: "flat",
-                initial: "remoteView/home.html"
+                initial: "remoteView/allDevice.html"
             });
             
         
