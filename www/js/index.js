@@ -1,44 +1,4 @@
-function open(e) {
-         var ws;
-         
-          //evt.preventDefault();
- 
-          var host = $("#host").val();
-          var port = $("#port").val();
-          var uri = $("#uri").val();
- 
-          ws = new WebSocket("ws://" + host + ":" + port + uri);
-          
-          ws.onmessage = function(evt) 
-          {
-              var str = evt.data;
-              var res = str.split("!");    
-              res.splice(res.length-1,1);              
-              for(var i in res){
-                var xbeeAddr = res[i].substring(res[i].indexOf("["),res[i].lastIndexOf("]")+1)+"!";
-                var xbeeType = res[i].substring(0,7);
-                $("#reciveSocket").append(i + " xbee Address = " + xbeeAddr + "<br>");
-                $("#reciveSocket").append(i + " xbee Type = " + xbeeType + "<br>");              
-              }
-              
-               e.view.element.find("#listview").kendoMobileListView({
-            template : "<strong>#:data.foo#</strong>",
-            dataSource: kendo.data.DataSource.create([{foo: xbeeAddr}, {foo: xbeeType}])
-        });
-              
-              ws.close();
-          };
- 
-          ws.onclose = function(evt) {  $("#reciveSocket").append("Connection Closed"); };
- 
-          ws.onopen = function(evt) { 
-            ws.send("homezig");
-            $("#host").css("background", "#00ff00"); 
-            $("#port").css("background", "#00ff00"); 
-            $("#uri").css("background", "#00ff00");
-          };
-       
-}
+
 
 /**
 var i = 0;
