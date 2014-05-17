@@ -229,7 +229,7 @@ made subject to such option by the copyright holder.
     </target>
     
     <target name="update-plugins">
-       <!-- <plugintask/> -->
+        <plugintask/> 
     </target>    
     
     <target name="update-android">
