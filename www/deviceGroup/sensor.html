@@ -1,0 +1,55 @@
+<div data-role="view" data-layout="main" data-transition="slide" data-title="Switch" data-reload="true">
+    <ul data-role="listview" data-source="sw" data-template="sw-dataSource-template">
+  </ul>
+</div>
+
+<script type="text/x-kendo-template" id="sw-dataSource-template">
+#: data.xaddr # #: data.xtype #
+</script>
+
+<script>
+    
+    
+var sw = new kendo.data.DataSource();
+sw.read();
+
+         var ws;
+         
+          //evt.preventDefault();
+ 
+          var host = $("#host").val();
+          var port = $("#port").val();
+          var uri = $("#uri").val();
+ 
+          ws = new WebSocket("ws://" + host + ":" + port + uri);
+          
+          ws.onmessage = function(evt) 
+          {
+              var str = evt.data;
+              var res = str.split("?");            
+              res.splice(res.length-1,1);              
+              for(var i in res){
+                var xbeeAddr = res[i].substring(res[i].indexOf("["),res[i].lastIndexOf("]")+1)+"!";
+                var xbeeType = res[i].substring(0,7);
+                $("#reciveSocket").append(i + " xbee Address = " + xbeeAddr + "<br>");
+                $("#reciveSocket").append(i + " xbee Type = " + xbeeType + "<br>");
+                
+                if(xbeeType === "0x30000"){
+                    sw.add({ xaddr: xbeeAddr, xtype: xbeeType });
+                }
+              }
+              sw.fetch();
+              
+              ws.close();
+          };
+ 
+          ws.onclose = function(evt) {  $("#reciveSocket").append("Connection Closed"); };
+ 
+          ws.onopen = function(evt) { 
+            ws.send("db_allnode");
+            $("#host").css("background", "#00ff00"); 
+            $("#port").css("background", "#00ff00"); 
+            $("#uri").css("background", "#00ff00");
+          };
+
+</script>

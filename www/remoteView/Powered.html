@@ -4,7 +4,7 @@
 </div>
 
 <script type="text/x-kendo-template" id="dataSource-template">
-#: data.xaddr # #: data.xtype #
+#: data.xaddr # #: data.xtype # #: data.xsta #
 </script>
 
 <script>
@@ -29,18 +29,22 @@ dataSource.read();
           ws.onmessage = function(evt) 
           {
               var str = evt.data;
-              var res = str.split("!");    
-              res.splice(res.length-1,1);              
+              var res = str.split("?");                
+              res.splice(res.length-1,1);
               for(var i in res){
-                var xbeeAddr = res[i].substring(res[i].indexOf("["),res[i].lastIndexOf("]")+1)+"!";
-                var xbeeType = res[i].substring(0,7);
-                $("#reciveSocket").append(i + " xbee Address = " + xbeeAddr + "<br>");
-                $("#reciveSocket").append(i + " xbee Type = " + xbeeType + "<br>");
+                var node = res[i].split("+");
                 
-                dataSource.add({ xaddr: xbeeAddr, xtype: xbeeType });
+                var xbeeAddr = node[0];
+                var xbeeType = node[1];
+                var xbeeStatus = node[2];
+               
+                //var xbeeAddr = res[i].substring(res[i].indexOf("["),res[i].lastIndexOf("]")+1)+"!";
+               // var xbeeType = res[i].substring(0,7);
+                //$("#reciveSocket").append(i + " xbee Address = " + xbeeAddr + "<br>");
+                //$("#reciveSocket").append(i + " xbee Type = " + xbeeType + "<br>");
+                
+                dataSource.add({ xaddr: xbeeAddr, xtype: xbeeType, xsta: xbeeStatus});
               }
-              
-              
               dataSource.fetch();
               
               ws.close();
@@ -49,7 +53,7 @@ dataSource.read();
           ws.onclose = function(evt) {  $("#reciveSocket").append("Connection Closed"); };
  
           ws.onopen = function(evt) { 
-            ws.send("homezig");
+            ws.send("db_allnode");
             $("#host").css("background", "#00ff00"); 
             $("#port").css("background", "#00ff00"); 
             $("#uri").css("background", "#00ff00");

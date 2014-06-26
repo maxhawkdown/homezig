@@ -1,37 +1,44 @@
+function HexToBinary(hex) {
+    //var hexNumber = hex;
+    var decNumber = parseInt(hex, 16);
+    return decNumber.toString(2).toUpperCase();
 
-
-/**
-var i = 0;
-// datasource below is customized for demo purposes.
-var allDevice = new kendo.data.DataSource({
-  transport: {
-    read: function(options) {
-      var max = i + 5;
-      var data = [];
-      for (; i < max; i ++) {
-        data.unshift({ name: "record" + i, modified: +new Date() });
-      }
-     //illustration purposes only
-      setTimeout(function() {
-                  options.success(data);
-      }, 500);
-
-    }
-  }
-});**/
-
-
-
-
-
-
- function xmlrpc(){
-    $.xmlrpc({       
-    url: 'http://maxrouterubu.no-ip.biz:8080',
-    methodName: 'get_echo',
-    params: 5,
-    success: function(response, status, jqXHR) {},
-    error: function(jqXHR, status, error) {  }
-});
 }
 
+function BinaryToHex(bin) {
+    var binaryNumber = bin;
+    var decNumber = parseInt(binaryNumber, 2);
+    var hexNumber = decNumber.toString(16).toUpperCase();
+    return hexNumber;
+
+
+}
+
+function ConvertToBinary() {
+    var numberValue = 10;
+    var decNumber = Number(numberValue);
+    return decNumber.toString(2).toUpperCase();
+
+
+}
+
+function hexConvertToDec() {
+    var hexNumber = "A";
+    var decNumber = parseInt(hexNumber, 16);
+    return decNumber;
+
+}
+
+function ConvertToHex() {
+    var numberValue = document.getElementById('NumberInput').value;
+    var decNumber = Number(numberValue);
+    var hexNumber = decNumber.toString(16).toUpperCase();
+
+    document.getElementById('Result').value = hexNumber;
+}
+
+function binConvertToDec() {
+    var binaryNumber = document.getElementById('NumberInput').value;
+    var decNumber = parseInt(binaryNumber, 2);
+    document.getElementById('Result').value = decNumber;
+}
