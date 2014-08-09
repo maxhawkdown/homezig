@@ -1,22 +1,67 @@
-<div data-role="view" data-layout="main" data-transition="slide" data-title="Switch 3 Port" data-after-show="afterShow">
+<div data-role="view" data-layout="main" data-transition="slide" data-title="Switch 3 Port" data-show="showIO">
     <ul data-role="listview" data-source="sw3"  data-template="sw3-dataSource-template" >
     </ul>    
 </div>
 
 <script type="text/x-kendo-template" id="sw3-dataSource-template">
-    #: data.dio # #: data.dioStatus # <input id="#: data.swid #" type="checkbox" data-role="switch" data-change="onChange" data-checked="#: data.swCheck #"\>
+    #: data.textInListView # #: data.dioStatus # <input id="#: data.swid #" type="checkbox" data-role="switch" data-change="onChange" data-checked="#: data.swCheck #"\>
 </script>
 
 <script>
-    var switchPortNumber = 3;
-    var sw3 = new kendo.data.DataSource();
-    var swAdd = switchInfo.getAddress();
-    function afterShow(e) {
-
-        // alert(swAdd);
-        ws.send("is_alive_io?" + swAdd);
-        //var sw3 = new kendo.data.DataSource();
+    var switchPortNumber;
+    // var sw3 = new kendo.data.DataSource();
+    var swAddr;
+    function showIO(e) {
+        swAddr = switchInfo.getAddress();
+        var swType = switchInfo.type;
+       // console.log("showIO function");
+        ws.send("is_alive_io?" + swAddr);
+       // console.log("is_alive_io?" + swAddr);
+        sendMessage.type = "is_alive_io";
         sw3.read();
+    }
+
+    function onChange(e) {
+
+        var dioStatusStr = "";
+        // var slide = this;
+        //var elementId = slide.element.context.id;       
+        //var switchInstance = $("#"+elementId).is(':checked');
+        switch (switchInfo.type) {
+        case deviceType.switch_1_Light_1_Outlet:           
+            switchPortNumber = 2;
+            dioStatusStr = "111111";
+            break;
+        case deviceType.switch_1_Light_NoOutlet:           
+            switchPortNumber = 1;
+            dioStatusStr = "1111111";
+            break;
+        case deviceType.switch_3_Light_NoOutlet:           
+            switchPortNumber = 3;
+            dioStatusStr = "11111";
+            break;
+        case deviceType.switch_No_Light_2_Outlet:            
+            switchPortNumber = 2;
+            dioStatusStr = "111111";
+            break;
+
+        default:
+
+    }
+        
+        for (var i = 0; i < switchPortNumber; i++) {
+            if ($("#swid" + i).is(':checked')) {
+                dioStatusStr += 1;
+            } else {
+                dioStatusStr += 0;
+            }
+        }
+        var hex = BinaryToHex(dioStatusStr);
+        ws.send("command_io?" + swAddr + "?" + hex);
+        sendMessage.type = "command_io";
+        //console.log("send = " + hex);
+        // get the checked state of the switch.
+        //console.log(dioStatusStr);
     }
     //var ws;
     //is_alive_io?addr
@@ -27,53 +72,35 @@
     //  var uri = $("#uri").val();
 
     // ws = new WebSocket("ws://" + host + ":" + port + uri);
+    /**
+     ws.onmessage = function(evt)
+     {
+     var str = evt.data;
+     console.log(str);
+     str = HexToBinary(str);
+     str = "11111001";
+     str = str.substring(5, 8);
+     var k = switchPortNumber;
+     for (var i in str) {
+     var dioStatus = str.charAt(i);
+     var dio = "D" + k;
+     k -= 1;
+     if (dioStatus === "1") {
+     var swCheck = "false";
+     } else {
+     var swCheck = "true";
+     }
+     var swid = "swid" + i;
+     sw3.add({dioStatus: dioStatus, dio: dio, swCheck: swCheck, swid: swid});
+     
+     }
+     
+     sw3.fetch();
+     
+     
+     };**/
 
-    ws.onmessage = function(evt)
-    {
-        var str = evt.data;
-        console.log(str);
-        str = HexToBinary(str);
-        str = "11111001";
-        str = str.substring(5, 8);
-        var k = switchPortNumber;
-        for (var i in str) {
-            var dioStatus = str.charAt(i);
-            var dio = "D" + k;
-            k -= 1;
-            if (dioStatus === "1") {
-                var swCheck = "false";
-            } else {
-                var swCheck = "true";
-            }
-            var swid = "swid" + i;
-            sw3.add({dioStatus: dioStatus, dio: dio, swCheck: swCheck, swid: swid});
-
-        }
-
-        sw3.fetch();
 
 
-    };
-
-
-    function onChange(e) {
-
-        var dioStatusStr = "";
-        // var slide = this;
-        //var elementId = slide.element.context.id;       
-        //var switchInstance = $("#"+elementId).is(':checked');
-        for (var i = 0; i < switchPortNumber; i++) {
-            if ($("#swid" + i).is(':checked')) {
-                dioStatusStr += 0;
-            } else {
-                dioStatusStr += 1;
-            }
-        }
-        var hex = BinaryToHex("11111" + dioStatusStr);
-        ws.send("command_io?" + swAdd + "?" + hex);
-        console.log("send = " + hex);
-        // get the checked state of the switch.
-        console.log(dioStatusStr);
-    }
 
 </script>

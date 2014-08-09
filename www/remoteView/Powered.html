@@ -1,63 +1,64 @@
 <div data-role="view" data-layout="main" data-transition="slide" data-title="Powered">
-    <ul data-role="listview" data-source="dataSource" data-template="dataSource-template">
-  </ul>
+    <ul data-role="listview" data-source="powered" data-template="dataSource-template">
+    </ul>
 </div>
 
 <script type="text/x-kendo-template" id="dataSource-template">
-#: data.xaddr # #: data.xtype # #: data.xsta #
+    #: data.xaddr # #: data.xtype # #: data.xsta #
 </script>
 
 <script>
-var dataSource = new kendo.data.DataSource();
-dataSource.read();
-
+    
+   // var powered = new kendo.data.DataSource();
+    
+    ws.send("db_allnode");
+    sendMessage.type = "db_allnode";    
+    powered.read();
 /**
- e.view.element.find("#listview").kendoMobileListView({
-            template : "<strong>#:data.foo#</strong>",
-            dataSource: kendo.data.DataSource.create([{foo: xbeeAddr}, {foo: xbeeType}])**/
+ ws.onmessage = function(evt)
+    {
+        var str = evt.data;
+        var res = str.split("?");
+        res.splice(res.length - 1, 1);
+        for (var i in res) {
+            var node = res[i].split("+");
+            var xbeeAddr = node[0];
+            var xbeeType = node[1];
+            var xbeeStatus = node[2];
+
+            powered.add({xaddr: xbeeAddr, xtype: xbeeType, xsta: xbeeStatus});
+        }
+        powered.fetch();
+
+       // ws.close();
+    };**/
+    /**
+     e.view.element.find("#listview").kendoMobileListView({
+     template : "<strong>#:data.foo#</strong>",
+     dataSource: kendo.data.DataSource.create([{foo: xbeeAddr}, {foo: xbeeType}])**/
 //function open(e) {
-         var ws;
-         
-          //evt.preventDefault();
- 
-          var host = $("#host").val();
-          var port = $("#port").val();
-          var uri = $("#uri").val();
- 
-          ws = new WebSocket("ws://" + host + ":" + port + uri);
-          
-          ws.onmessage = function(evt) 
-          {
-              var str = evt.data;
-              var res = str.split("?");                
-              res.splice(res.length-1,1);
-              for(var i in res){
-                var node = res[i].split("+");
-                
-                var xbeeAddr = node[0];
-                var xbeeType = node[1];
-                var xbeeStatus = node[2];
-               
-                //var xbeeAddr = res[i].substring(res[i].indexOf("["),res[i].lastIndexOf("]")+1)+"!";
-               // var xbeeType = res[i].substring(0,7);
-                //$("#reciveSocket").append(i + " xbee Address = " + xbeeAddr + "<br>");
-                //$("#reciveSocket").append(i + " xbee Type = " + xbeeType + "<br>");
-                
-                dataSource.add({ xaddr: xbeeAddr, xtype: xbeeType, xsta: xbeeStatus});
-              }
-              dataSource.fetch();
-              
-              ws.close();
-          };
- 
-          ws.onclose = function(evt) {  $("#reciveSocket").append("Connection Closed"); };
- 
-          ws.onopen = function(evt) { 
-            ws.send("db_allnode");
-            $("#host").css("background", "#00ff00"); 
-            $("#port").css("background", "#00ff00"); 
-            $("#uri").css("background", "#00ff00");
-          };
-       
+   // var ws;
+
+    //evt.preventDefault();
+
+  //  var host = $("#host").val();
+  //  var port = $("#port").val();
+  //  var uri = $("#uri").val();
+
+  //  ws = new WebSocket("ws://" + host + ":" + port + uri);
+
+   
+
+  /**  ws.onclose = function(evt) {
+        $("#reciveSocket").append("Connection Closed");
+    };
+
+    ws.onopen = function(evt) {
+        ws.send("db_allnode");
+        $("#host").css("background", "#00ff00");
+        $("#port").css("background", "#00ff00");
+        $("#uri").css("background", "#00ff00");
+    };**/
+
 //}
 </script>
