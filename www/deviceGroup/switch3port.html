@@ -58,7 +58,8 @@
         }
         var hex = BinaryToHex(dioStatusStr);
         ws.send("command_io?" + swAddr + "?" + hex);
-        sendMessage.type = "command_io";
+       // console.log(hex);
+        //sendMessage.type = "command_io";
         //console.log("send = " + hex);
         // get the checked state of the switch.
         //console.log(dioStatusStr);

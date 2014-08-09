@@ -5,9 +5,16 @@ var sendMessage = new function() {
     };
 };
 var recMessage = new function() {
+    this.inst = "";
     this.type = "";
+    this.address = "";
+    this.status = "";
+    this.io = "";
     this.getType = function() {
         return this.type;
+    };
+    this.getInst = function() {
+        return this.inst;
     };
 };
 
@@ -84,7 +91,14 @@ function binConvertToDec() {
 /**end powered **/
 
 /** switch **/
+function homeLoad() {
+    
+       
+}
 
+function switchFile() {
+    
+}
 /**end switch **/
 
 /** switch 3 port**/
