@@ -4,7 +4,7 @@ ws.onmessage = function(evt)
     str = evt.data;
     console.log(str);
     var res = str.split("?");
-    recMessage.inst = res[0];    
+    recMessage.inst = res[0];
 
     switch (recMessage.getInst()) {
         case "db_allnode":
@@ -74,7 +74,7 @@ function answer_db_allnode() {
 }
 
 function answer_is_alive_io() {
-
+    sw3.data([]);
     var res = str.split("?");
     //res.splice(res.length - 1, 1);
     console.log(res[0]);
@@ -130,33 +130,53 @@ function answer_command_io() {
 }
 
 function user_trig() {
-    
-    
-    
+
     var res = str.split("?");
-    
-    recMessage.address = res[1];   
+    // sw3.data([]);
+    recMessage.address = res[1];
     recMessage.io = res[3];
     recMessage.type = res[2];
-    console.log("address " + recMessage.address );    
-    console.log("io " + recMessage.io );
-    console.log("type " + recMessage.type );
-    
+    console.log("address " + recMessage.address);
+    console.log("io " + recMessage.io);
+    console.log("type " + recMessage.type);
+
+    var ioBin = HexToBinary(recMessage.io);
+    ioBin = ioBin.substring(5, 8);
+    console.log(ioBin);
     res.splice(res.length - 1, 1);
     res.splice(0, 1);
 
     switch (recMessage.type) {
         case deviceType.switch_1_Light_1_Outlet:
-           
+
             break;
         case deviceType.switch_1_Light_NoOutlet:
-            
+
             break;
         case deviceType.switch_3_Light_NoOutlet:
-            
+            for (var i = 0; i < 3; i++) {
+                console.log(ioBin[i]);
+                if (ioBin[i] === '1') {
+                    sw3.fetch(function() {
+                        var dataItem = sw3.at(i);
+                        dataItem.swCheck = "true";
+                        dataItem.swid = i;
+
+                    });
+                } else {
+                    sw3.fetch(function() {
+                        var dataItem = sw3.at(i);
+                        dataItem.swCheck = "false";
+                        dataItem.swid = i;
+                    });
+
+                }
+            }
+            //sw3.fetch();
+            //sw3.read();
             break;
         case deviceType.switch_No_Light_2_Outlet:
-            
+
             break;
 
         default:

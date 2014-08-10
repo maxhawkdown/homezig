@@ -16,7 +16,7 @@
         var swType = switchInfo.type;
        // console.log("showIO function");
         ws.send("is_alive_io?" + swAddr);
-       // console.log("is_alive_io?" + swAddr);
+        console.log("is_alive_io?" + swAddr);
         sendMessage.type = "is_alive_io";
         sw3.read();
     }
@@ -58,7 +58,7 @@
         }
         var hex = BinaryToHex(dioStatusStr);
         ws.send("command_io?" + swAddr + "?" + hex);
-       // console.log(hex);
+        console.log(hex);
         //sendMessage.type = "command_io";
         //console.log("send = " + hex);
         // get the checked state of the switch.
