@@ -4,6 +4,12 @@ var sendMessage = new function() {
         return this.type;
     };
 };
+var requestMessage = new function() {
+    this.type = "";
+    this.getType = function() {
+        return this.type;
+    };
+};
 var recMessage = new function() {
     this.inst = "";
     this.type = "";

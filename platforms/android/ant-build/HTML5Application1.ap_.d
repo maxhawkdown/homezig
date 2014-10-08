@@ -273,6 +273,7 @@ D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\css\styles\Uni
 D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\deviceGroup\cctv.html \
 D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\deviceGroup\control.html \
 D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\deviceGroup\gate.html \
+D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\deviceGroup\gateStatus.html \
 D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\deviceGroup\security.html \
 D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\deviceGroup\sensor.html \
 D:\workspace\NetBeanProjects\HomeZig\platforms\android\assets\www\deviceGroup\switch.html \

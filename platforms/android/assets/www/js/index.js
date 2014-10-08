@@ -27,6 +27,7 @@ var deviceType = new function() {
     this.switch_3_Light_NoOutlet = "0x3ff30";    
     this.switch_1_Light_1_Outlet = "0x3ff11";
     this.switch_No_Light_2_Outlet = "0x3ff02";
+    this.gate = "0x3ff90";
 };
 
 var nodeStatus = new function() {
@@ -39,13 +40,22 @@ var nodeStatus = new function() {
 var sw = new kendo.data.DataSource();
 var sw3 = new kendo.data.DataSource();
 var powered = new kendo.data.DataSource();
+var gate = new kendo.data.DataSource();
+var gateStatus = new kendo.data.DataSource();
 
 
 
 function HexToBinary(hex) {
     //var hexNumber = hex;
     var decNumber = parseInt(hex, 16);
-    return decNumber.toString(2).toUpperCase();
+    var bin = decNumber.toString(2);
+    var len = bin.length;
+    var zero = "0";
+    
+    for(var i=len;i < 8;i++){
+        bin = zero.concat(bin);
+    }
+    return bin;
 
 }
 

@@ -17,8 +17,9 @@
 <script>
     
    // var powered = new kendo.data.DataSource();
-    
+    requestMessage.type = "db_allnode";
     ws.send("db_allnode");
+    requestMessage.type = "";
     //sendMessage.type = "db_allnode";    
     powered.read();
     

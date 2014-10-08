@@ -11,8 +11,8 @@
 <script>
    // var sw = new kendo.data.DataSource();
     // function afterShow2(e) {
-    ws.send("db_allnode");
-    sendMessage.type = "db_allnode";
+    requestMessage.type = "db_allnode";
+    ws.send("db_allnode");   
     gate.read();
 
     var gateInfo = new function() {

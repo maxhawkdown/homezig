@@ -13,12 +13,12 @@
     var gateAddr;
     function showGateIO(e) {
         gateAddr = gateInfo.getAddress();
-        var swType = gateInfo.type;
+        var gateType = gateInfo.type;
         console.log("showGateIO function");
         sendMessage.type = "is_alive_io_gate";
+        requestMessage.type = "is_alive_io";
         ws.send("is_alive_io?" + gateAddr);
-        //console.log("is_alive_io?" + gateAddr);
-        
+        //console.log("is_alive_io?" + gateAddr);        
         gateStatus.read();
     }
 

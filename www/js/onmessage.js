@@ -8,12 +8,18 @@ ws.onmessage = function (evt)
 
     switch (recMessage.getInst()) {
         case "db_allnode":
-            answer_db_allnode();
-            recMessage.inst = "";
+            if (requestMessage.getType() === 'db_allnode') {
+                requestMessage.type = "";
+                answer_db_allnode();
+                recMessage.inst = "";
+            }
             break;
         case "is_alive_io":
-            answer_is_alive_io_test();
-            recMessage.inst = "";
+            if (requestMessage.getType() === 'is_alive_io') {
+                requestMessage.type = "";
+                answer_is_alive_io_test();
+                recMessage.inst = "";
+            }
             break;
         case "command_io":
             answer_command_io();
@@ -73,6 +79,7 @@ function answer_db_allnode() {
     }
     sw.fetch();
     powered.fetch();
+
     //powered.read();
 }
 
@@ -211,8 +218,8 @@ function user_trig() {
             break;
         case deviceType.switch_No_Light_2_Outlet:
             break;
-         case deviceType.gate:
-             for (var i = 0; i < 5; i++) {
+        case deviceType.gate:
+            for (var i = 0; i < 5; i++) {
                 console.log(ioBin[i]);
                 if (ioBin[i] === '1') {
                     gateStatus.fetch(function () {
@@ -291,7 +298,7 @@ function answer_is_alive_io_test() {
             break;
         case "is_alive_io_gate":
             str = str.substring(3, 8);
-            console.log(str + " aaaaaaa");           
+            console.log(str + " aaaaaaa");
             for (var i in str) {
                 var dioStatus = str.charAt(i);
                 if (dioStatus === "1") {
