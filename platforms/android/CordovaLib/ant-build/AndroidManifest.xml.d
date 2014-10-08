@@ -1,2 +1,2 @@
-E:\NetBeansProjects\HTML5Application1\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
-E:\NetBeansProjects\HTML5Application1\platforms\android\CordovaLib\AndroidManifest.xml \
+D:\workspace\NetBeanProjects\HomeZig\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
+D:\workspace\NetBeanProjects\HomeZig\platforms\android\CordovaLib\AndroidManifest.xml \

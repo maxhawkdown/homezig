@@ -1,2 +1,2 @@
-E:\NetBeansProjects\HTML5Application1\platforms\android\ant-build\AndroidManifest.xml : \
-E:\NetBeansProjects\HTML5Application1\platforms\android\AndroidManifest.xml \
+D:\workspace\NetBeanProjects\HomeZig\platforms\android\ant-build\AndroidManifest.xml : \
+D:\workspace\NetBeanProjects\HomeZig\platforms\android\AndroidManifest.xml \

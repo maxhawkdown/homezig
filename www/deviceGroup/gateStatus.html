@@ -1,0 +1,69 @@
+<div data-role="view" data-layout="main" data-transition="slide" data-title="Gate Status" data-show="showGateIO">    
+    <ul data-role="listview" data-source="gateStatus"  data-template="gateStatus-dataSource-template" >
+    </ul>    
+</div>
+
+<script type="text/x-kendo-template" id="gateStatus-dataSource-template">
+    #: data.textInListView # #: data.dioStatus # <input id="#: data.gateid #" type="checkbox" data-role="switch" data-change="onChange" data-checked="#: data.gateCheck #"\>
+</script>
+
+<script>
+   // var switchPortNumber;
+    // var sw3 = new kendo.data.DataSource();
+    var gateAddr;
+    function showGateIO(e) {
+        gateAddr = gateInfo.getAddress();
+        var swType = gateInfo.type;
+        console.log("showGateIO function");
+        sendMessage.type = "is_alive_io_gate";
+        ws.send("is_alive_io?" + gateAddr);
+        //console.log("is_alive_io?" + gateAddr);
+        
+        gateStatus.read();
+    }
+
+    function onChange(e) {
+
+        
+    }
+    //var ws;
+    //is_alive_io?addr
+    //evt.preventDefault();
+
+    //  var host = $("#host").val();
+    // var port = $("#port").val();
+    //  var uri = $("#uri").val();
+
+    // ws = new WebSocket("ws://" + host + ":" + port + uri);
+    /**
+     ws.onmessage = function(evt)
+     {
+     var str = evt.data;
+     console.log(str);
+     str = HexToBinary(str);
+     str = "11111001";
+     str = str.substring(5, 8);
+     var k = switchPortNumber;
+     for (var i in str) {
+     var dioStatus = str.charAt(i);
+     var dio = "D" + k;
+     k -= 1;
+     if (dioStatus === "1") {
+     var swCheck = "false";
+     } else {
+     var swCheck = "true";
+     }
+     var swid = "swid" + i;
+     sw3.add({dioStatus: dioStatus, dio: dio, swCheck: swCheck, swid: swid});
+     
+     }
+     
+     sw3.fetch();
+     
+     
+     };**/
+
+
+
+
+</script>

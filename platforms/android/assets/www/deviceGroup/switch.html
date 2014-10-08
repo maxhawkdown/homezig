@@ -1,0 +1,82 @@
+<div data-role="view" data-layout="main" data-transition="slide" data-title="Switch"  >
+    <ul data-role="listview" data-source="sw" data-template="sw-dataSource-template" data-click="swClick">
+    </ul>
+</div>
+
+<script type="text/x-kendo-template" id="sw-dataSource-template">
+    <a href="deviceGroup/switch3port.html">#: data.textInListView #</a>
+</script>
+
+<script src="../js/index.js"></script>
+<script>
+   // var sw = new kendo.data.DataSource();
+    // function afterShow2(e) {
+    ws.send("db_allnode");
+    sendMessage.type = "db_allnode";
+    sw.read();
+
+    var switchInfo = new function() {
+        this.type = "";
+        this.address = "";
+        this.getAddress = function() {
+            return this.address;
+        };
+    };
+
+    function swClick(e) {
+        // var addr = e.dataItem.xaddr;
+        //console.log(addr);
+        switchInfo.type = e.dataItem.xtype;
+        switchInfo.address = e.dataItem.xaddr;
+        //console.log(switchInfo.address);
+    }
+   
+    //   }
+    // var ws;
+    //is_alive_io?addr
+    //evt.preventDefault();
+
+    // var host = $("#host").val();
+    // var port = $("#port").val();
+    // var uri = $("#uri").val();
+
+    // ws = new WebSocket("ws://" + host + ":" + port + uri);
+    /**
+     ws.onmessage = function(evt)
+     {
+     var str = evt.data;
+     console.log(str);
+     var res = str.split("?");
+     res.splice(res.length - 1, 1);
+     for (var i in res) {
+     var node = res[i].split("+");
+     var xbeeAddr = node[0];
+     var xbeeType = node[1];
+     var xbeeStatus = node[2];
+     
+     
+     if (xbeeType === "0x30000") {
+     // switchInfo.address.push(xbeeAddr);
+     sw.add({xaddr: xbeeAddr, xtype: xbeeType});
+     }
+     }
+     sw.fetch();
+     
+     
+     };
+     
+     ws.onclose = function(evt) {
+     $("#reciveSocket").html("Connection Closed");
+     };**/
+
+    //  ws.onopen = function(evt) {
+    //    ws.send("db_allnode");
+    //   $("#host").css("background", "#00ff00");
+    //   $("#port").css("background", "#00ff00");
+    //   $("#uri").css("background", "#00ff00");
+    //  };
+
+
+
+
+</script>

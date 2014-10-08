@@ -19,7 +19,8 @@
             </li>            
         </ul>     
     </form>
-
+    <a  data-click="conws" data-role="button" style="display: block; margin: 2em; text-align: center;">Connect</a>
+    <a  data-click="closews" data-role="button" style="display: block; margin: 2em; text-align: center;">Close</a>
     <div id="reciveSocket"></div>
     <script>
 
@@ -28,7 +29,14 @@
         var port = $("#port").val();
         var uri = $("#uri").val();
 
-
+        function conws() {
+           // alert("ss");
+           ws = "";
+           ws = new WebSocket("ws://" + host + ":" + port + uri);
+        }
+        function closews() {            
+           ws.close();
+        }
         ws = new WebSocket("ws://" + host + ":" + port + uri);
 
         ws.onopen = function(evt) {
@@ -40,6 +48,10 @@
 
         ws.onclose = function(evt) {
             $("#reciveSocket").append("Connection Closed");
+            $("#host").css("background", "#ff0000");
+            $("#port").css("background", "#ff0000");
+            $("#uri").css("background", "#ff0000");
+            ws = new WebSocket("ws://" + host + ":" + port + uri);
         };
     </script>
     <script src="js/onmessage.js"></script>
